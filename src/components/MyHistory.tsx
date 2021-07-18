@@ -6,15 +6,11 @@ import "react-vertical-timeline-component/style.min.css"
 
 import { careers } from "data/careers"
 
-interface MyHistoryProps {
-  animate: boolean
-}
-
-const MyHistory: React.FC<MyHistoryProps> = ({ animate }) => {
+const MyHistory: React.FC = () => {
 
   return (
     <Grid container justifyContent="center" style={{ marginTop: "2rem" }}>
-      <VerticalTimeline animate={animate}>
+      <VerticalTimeline>
         {
           careers.map(({ title, description, date, backGround, icon }, i) => {
             return (

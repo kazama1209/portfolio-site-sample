@@ -4,7 +4,6 @@ import GitHubIcon from "@material-ui/icons/GitHub"
 
 import "imagehover.css/css/imagehover.min.css"
 
-import Link from "components/utils/Link"
 import { works } from "data/works"
 
 import dynamic from "next/dynamic"
@@ -30,11 +29,7 @@ const useStyles = makeStyles(() => ({
   }
 }))
 
-interface WorkCardsProps {
-  animate: boolean
-}
-
-const WorkCards: React.FC<WorkCardsProps> = ({ animate }) => {
+const WorkCards: React.FC = () => {
   const classes = useStyles()
   
   return (
@@ -44,7 +39,6 @@ const WorkCards: React.FC<WorkCardsProps> = ({ animate }) => {
           return (
             <Grid item key={index} sm={6} md={4} style={{ textAlign: "center" }}>
                 <ScrollRevealContainer
-                  animate={animate}
                   delay={(index + 1) * 100}
                   origin="right"
                 >

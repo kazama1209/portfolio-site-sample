@@ -2,14 +2,13 @@ import Head from "next/head"
 
 import Header from "./Header"
 import Footer from "./Footer"
-// import ScrollUp from "../utils/ScrollUp"
 
-interface CommonLayout {
+interface CommonLayoutProps {
   children: React.ReactElement
   title: string
 }
 
-const CommonLayout = ({ children, title }: CommonLayout) => {
+const CommonLayout: React.FC<CommonLayoutProps> = ({ children, title }) => {
   return (
     <>
       <Head>
@@ -21,7 +20,6 @@ const CommonLayout = ({ children, title }: CommonLayout) => {
       <main>
         {children}
       </main>
-      {/* <ScrollUp /> */}
       <footer>
         <Footer />
       </footer>

@@ -2,14 +2,12 @@ import { useRef, useEffect } from "react"
 import scrollReveal from "scrollreveal"
 
 interface ScrollRevealContainerProps {
-  animate: boolean
   delay?: number
   origin?: string
 }
 
 const ScrollRevealContainer: React.FC<ScrollRevealContainerProps> = ({
   children,
-  animate,
   delay,
   origin
 }) => {
@@ -34,7 +32,7 @@ const ScrollRevealContainer: React.FC<ScrollRevealContainerProps> = ({
       })
   }, [sectionRef])
 
-  return animate ? <section ref={sectionRef}>{children}</section> : <section>{children}</section>
+  return <section ref={sectionRef}>{children}</section>
 }
 
 export default ScrollRevealContainer

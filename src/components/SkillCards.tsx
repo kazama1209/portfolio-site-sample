@@ -38,11 +38,7 @@ const useStyles = makeStyles(() => ({
   }
 }))
 
-interface SkillCardsProps {
-  animate: boolean
-}
-
-const SkillCards: React.FC<SkillCardsProps> = ({ animate }) => {
+const SkillCards: React.FC = () => {
   const classes = useStyles()
 
   return (
@@ -52,7 +48,6 @@ const SkillCards: React.FC<SkillCardsProps> = ({ animate }) => {
           return (
             <Grid item key={field} xs={12} sm={6} md={4}>
               <ScrollRevealContainer
-                animate={animate}
                 delay={(index + 1) * 100}
                 origin="left"
               >

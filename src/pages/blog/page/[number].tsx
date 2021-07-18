@@ -98,7 +98,7 @@ const BlogPage = ({ currentPageNumber, postsByPageNumber, allPosts }) => {
               </Typography>
             </Grid>
           </Grid>
-          <PostCards posts={postsByPageNumber} animate={false} />
+          <PostCards posts={postsByPageNumber} />
           <Grid container justifyContent="center" style={{ marginTop: "3rem" }}>
             <Grid item>
             <Pagination

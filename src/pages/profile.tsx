@@ -58,7 +58,7 @@ const Profile = ({ posts }) => {
               </Grid>
             </Grid>
             <MyAvatar />
-            <MyHistory animate={true} />
+            <MyHistory />
           </Container>
         </section>
         <section id="skills" className={classes.skills}>
@@ -73,7 +73,7 @@ const Profile = ({ posts }) => {
                 </Typography>
               </Grid>
             </Grid>
-            <SkillCards animate={true} />
+            <SkillCards />
           </Container>
         </section>
         <section id="works" className={classes.works}>
@@ -85,7 +85,7 @@ const Profile = ({ posts }) => {
                 </Typography>
               </Grid>
             </Grid>
-            <WorkCards animate={true} />
+            <WorkCards />
           </Container>
         </section>
         <section id="blog" className={classes.blog}>
@@ -97,7 +97,7 @@ const Profile = ({ posts }) => {
                 </Typography>
               </Grid>
             </Grid>
-            <PostCards posts={posts} animate={true} />
+            <PostCards posts={posts} />
           </Container>
         </section>
       </>

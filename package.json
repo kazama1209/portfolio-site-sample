@@ -16,7 +16,6 @@
     "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-scroll-to-top": "^1.0.5",
     "react-share": "^4.4.0",
     "react-vertical-timeline-component": "^3.3.3",
     "scrollreveal": "^4.0.9"
