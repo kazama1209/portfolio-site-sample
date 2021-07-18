@@ -1,10 +1,12 @@
-import Button from "@material-ui/core/Button"
+import TopImage from "components/TopImage"
 
 const Home: React.FC = () => {
   return (
     <>
-      <h1>Hello World!!</h1>
-      <Button variant="contained">Default</Button>
+      <div className="shutter">
+        <img src="nextjs.png" alt="logo" className="logo"/>
+      </div>
+      <TopImage />
     </>
   )
 }

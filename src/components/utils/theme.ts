@@ -26,11 +26,11 @@ const theme = createTheme({
   },
   typography: {
     h1: {
-      fontSize: "3rem",
+      fontSize: "4rem",
       fontWeight: 500
     },
     h2: {
-      fontSize: "2rem",
+      fontSize: "3rem",
       fontWeight: 500
     },
     h3: {
