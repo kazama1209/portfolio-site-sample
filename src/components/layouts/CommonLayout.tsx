@@ -2,7 +2,7 @@ import Head from "next/head"
 
 import Header from "./Header"
 import Footer from "./Footer"
-import ScrollUp from "../utils/ScrollUp"
+// import ScrollUp from "../utils/ScrollUp"
 
 interface CommonLayout {
   children: React.ReactElement
@@ -21,7 +21,7 @@ const CommonLayout = ({ children, title }: CommonLayout) => {
       <main>
         {children}
       </main>
-      <ScrollUp />
+      {/* <ScrollUp /> */}
       <footer>
         <Footer />
       </footer>
@@ -29,7 +29,7 @@ const CommonLayout = ({ children, title }: CommonLayout) => {
         {`
           html,
           body {
-            background: #f0f8ff;
+            background: #ffffff;
             overflow-x: hidden;
             padding: 0 !important;
           }

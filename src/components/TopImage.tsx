@@ -32,7 +32,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     "-ms-transform": "translate(-50%,-50%)",
     "-webkit-transform": "translate(-50%,-50%)",
     transform: "translate(-50%,-50%)",
-    border: "1px solid rgba(255, 255, 255)"
+    border: "1px solid rgba(255, 255, 255)",
+    borderRadius: 8
   },
   text: {
     color: "#ffffff"

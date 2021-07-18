@@ -14,9 +14,12 @@ import { fetchAllPosts, fetchPostById } from "lib/api/posts"
 import { Post } from "interfaces/index"
 
 const useStyles = makeStyles(() => ({
+  blog: {
+    backgroundColor: "#f0f8ff"
+  },
   container: {
-    marginTop: "4rem",
-    marginBottom: "6rem",
+    paddingTop: "4rem",
+    paddingBottom: "6rem",
     width: 640,
     maxWidth: "100%",
   },
@@ -54,45 +57,47 @@ const BlogId = ({ post }) => {
 
   return (
     <CommonLayout title="Blog | Portfolio">
-      <Container className={classes.container}>
-        <Card>
-          <CardContent>
-            <Grid container direction="column" spacing={3} className={classes.gridContainer}>
-              <Grid item>
-                <Typography variant="h2">{post.title}</Typography>
+      <section className={classes.blog}>
+        <Container className={classes.container}>
+          <Card>
+            <CardContent>
+              <Grid container direction="column" spacing={3} className={classes.gridContainer}>
+                <Grid item>
+                  <Typography variant="h2">{post.title}</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography color="textSecondary">
+                    {moment(post.publishedAt).format("MMMM Do YYYY")}
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <img src={post.thumbnail.url} style={{ height: "auto", width: "100%" }} />
+                </Grid>
               </Grid>
-              <Grid item>
-                <Typography color="textSecondary">
-                  {moment(post.publishedAt).format("MMMM Do YYYY")}
-                </Typography>
+              <Grid container
+                direction="column"
+                alignItems="center"
+                className={classes.gridContainer}
+                >
+                <Grid item style={{ marginTop: "1.5rem" }}>
+                  <ShareButton
+                    url={`https://<デプロイ後のドメイン>/blog/${post.id}`} // 適宜変更
+                  />
+                </Grid>
               </Grid>
-              <Grid item>
-                <img src={post.thumbnail.url} style={{ height: "auto", width: "100%" }} />
+              <Grid container direction="column" alignItems="center" className={classes.gridContainer}>
+                <Grid item>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: `${post.body}`
+                    }}
+                  />
+                </Grid>
               </Grid>
-            </Grid>
-            <Grid container
-              direction="column"
-              alignItems="center"
-              className={classes.gridContainer}
-              >
-              <Grid item style={{ marginTop: "1.5rem" }}>
-                <ShareButton
-                  url={`https://<デプロイ後のドメイン>/blog/${post.id}`} // 適宜変更
-                />
-              </Grid>
-            </Grid>
-            <Grid container direction="column" alignItems="center" className={classes.gridContainer}>
-              <Grid item>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: `${post.body}`
-                  }}
-                />
-              </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
-      </Container>
+            </CardContent>
+          </Card>
+        </Container>
+      </section>
     </CommonLayout>
   )
 }

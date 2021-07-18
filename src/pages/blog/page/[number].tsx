@@ -14,9 +14,12 @@ import { fetchAllPosts, fetchPostsByPageNumber } from "lib/api/posts"
 import { Post } from "interfaces/index"
 
 const useStyles = makeStyles(() => ({
+  blog: {
+    backgroundColor: "#f0f8ff"
+  },
   container: {
-    marginTop: "3rem",
-    marginBottom: "6rem"
+    paddingTop: "3rem",
+    paddingBottom: "6rem"
   },
   card: {
     marginBottom: "0.5rem",
@@ -76,10 +79,6 @@ const BlogPage = ({ currentPageNumber, postsByPageNumber, allPosts }) => {
   const classes = useStyles()
   const router = useRouter()
 
-  const featuredPosts = (index: number): boolean => {
-    return index < 2
-  }
-
   const handleChangePage = useCallback(
     (_: React.ChangeEvent<unknown>, number: number) => {
       router.push(`${number}`)
@@ -89,8 +88,8 @@ const BlogPage = ({ currentPageNumber, postsByPageNumber, allPosts }) => {
   const perPage: number = 8
 
   return (
-    <>
-      <CommonPageTemplate title="Blog | Portfolio">
+    <CommonPageTemplate title="Blog | Portfolio">
+      <section className={classes.blog}>
         <Container maxWidth="lg" className={classes.container}>
           <Grid container justifyContent="center" style={{ marginBottom: "1rem" }}>
             <Grid item>
@@ -111,8 +110,8 @@ const BlogPage = ({ currentPageNumber, postsByPageNumber, allPosts }) => {
             </Grid>
           </Grid>
         </Container>
-      </CommonPageTemplate>
-    </>
+      </section>
+    </CommonPageTemplate>
   )
 }
 
