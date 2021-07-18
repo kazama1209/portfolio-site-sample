@@ -45,9 +45,10 @@ const useStyles = makeStyles(() => ({
 
 interface PostCardsProps {
   posts: Post[]
+  isAnimationOff?: boolean
 }
 
-const PostCards: React.FC<PostCardsProps> = ({ posts }) => {
+const PostCards: React.FC<PostCardsProps> = ({ posts, isAnimationOff }) => {
   const classes = useStyles()
 
   const featuredPosts = (index: number): boolean => {
@@ -63,6 +64,7 @@ const PostCards: React.FC<PostCardsProps> = ({ posts }) => {
           md={featuredPosts(index) ? 6 : 4}
         >
           <ScrollRevealContainer
+            isAnimationOff={isAnimationOff}
             delay={(index + 1) * 100}
             origin="bottom"
           >
