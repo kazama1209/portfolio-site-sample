@@ -15,11 +15,10 @@ import { Post } from "interfaces/index"
 
 const useStyles = makeStyles(() => ({
   blog: {
-    backgroundColor: "#f0f8ff"
+    backgroundColor: "#f0f8ff",
+    padding: "4rem 0 5.5rem 0"
   },
   container: {
-    paddingTop: "4rem",
-    paddingBottom: "6rem",
     width: 640,
     maxWidth: "100%",
   },

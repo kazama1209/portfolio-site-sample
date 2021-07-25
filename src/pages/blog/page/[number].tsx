@@ -15,11 +15,8 @@ import { Post } from "interfaces/index"
 
 const useStyles = makeStyles(() => ({
   blog: {
-    backgroundColor: "#f0f8ff"
-  },
-  container: {
-    paddingTop: "3rem",
-    paddingBottom: "6rem"
+    backgroundColor: "#f0f8ff",
+    padding: "4rem 0 5.5rem 0"
   },
   card: {
     marginBottom: "0.5rem",
@@ -94,7 +91,7 @@ const BlogPage = ({ currentPageNumber, postsByPageNumber, allPosts }) => {
   return (
     <CommonPageTemplate title="Blog | Portfolio">
       <section id="blog-page" className={classes.blog}>
-        <Container maxWidth="lg" className={classes.container}>
+        <Container maxWidth="lg">
           <Grid container justifyContent="center" style={{ marginBottom: "1rem" }}>
             <Grid item>
               <Typography variant="h2" gutterBottom>
