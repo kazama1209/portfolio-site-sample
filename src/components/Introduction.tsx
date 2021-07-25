@@ -1,11 +1,58 @@
-import { makeStyles, Theme } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import { Typography, Box  } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
 
 import Link from "components/utils/Link"
 
-const useStyles = makeStyles((theme: Theme) => ({
-  box: {
+const useStyles = makeStyles(() => ({
+  shutter: {
+    width: "100%",
+    height: "100%",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    margin: "auto",
+    backgroundColor: "#fff",
+    zIndex: 99,
+    "-webkit-animation": `$byeShutter 2.4s forwards`,
+    animation: `$byeShutter 2.4s forwards`
+  },
+  logo: {
+    position: "absolute",
+    width: "120px",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    margin: "auto",
+    "-webkit-animation": `$logo 0.8s forwards`,
+    animation: `$logo 0.8s forwards`,
+    animationDelay: "0.2s"
+  },
+  "@keyframes byeShutter": {
+    "70%": {
+      opacity: 1
+    },
+    "100%": {
+      display: "none",
+      opacity: 0,
+      zIndex: -1
+    }
+  },
+  "@keyframes logo": {
+    "0%": {
+      opacity: 1
+    }, 
+    "50%": {
+      transform: "rotate(0deg)"
+    },
+    "100%": {
+      transform: "scale(0.8)"
+    }
+  },
+  wrapperBox: {
     backgroundSize: "cover",
     backgroundImage: `url(languages.png)`,
     backgroundPosition: "center center",
@@ -36,11 +83,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: 8
   },
   text: {
-    color: "#ffffff"
+    color: "#fff"
   },
   button: {
-    color: "#ffffff",
-    borderColor: "#ffffff",
+    color: "#fff",
+    borderColor: "#fff",
     marginTop: "2rem",
     marginBottom: "1rem",
     "&:hover": {
@@ -50,11 +97,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }))
 
-const MyAvatar: React.FC = () => {
+const Introduction: React.FC = () => {
   const classes = useStyles()
 
   return (
-    <Box className={classes.box}>
+    <>
+    <div className={classes.shutter}>
+      <img src="nextjs.png" alt="logo" className={classes.logo}/>
+    </div>
+    <Box className={classes.wrapperBox}>
       <div className={classes.overlay} />
       <Box className={classes.textBox}>
         <Typography
@@ -71,14 +122,15 @@ const MyAvatar: React.FC = () => {
         >
           Japanese Web Engineer
         </Typography>
-        <Link href="/profile">
+        <Link href="/about">
           <Button variant="outlined" className={classes.button}>
             Enter
           </Button>
         </Link>
       </Box>
     </Box>
+    </>
   )
 }
 
-export default MyAvatar
+export default Introduction

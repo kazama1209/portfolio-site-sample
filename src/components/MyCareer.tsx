@@ -4,18 +4,18 @@ import StarIcon from "@material-ui/icons/Star"
 import { VerticalTimeline, VerticalTimelineElement }  from "react-vertical-timeline-component"
 import "react-vertical-timeline-component/style.min.css"
 
-import { careers } from "data/careers"
+import { histories } from "data/histories"
 
-const MyHistory: React.FC = () => {
+const MyCareer: React.FC = () => {
 
   return (
     <Grid container justifyContent="center" style={{ marginTop: "2rem" }}>
       <VerticalTimeline>
         {
-          careers.map(({ title, description, date, backGround, icon }, i) => {
+          histories.map(({ title, description, date, backGround, icon }, index) => {
             return (
               <VerticalTimelineElement
-                key={i}
+                key={index}
                 className="vertical-timeline-element"
                 date={date}
                 iconStyle={{ background: backGround, color: "#fff" }}
@@ -38,4 +38,4 @@ const MyHistory: React.FC = () => {
   )
 }
 
-export default MyHistory
+export default MyCareer

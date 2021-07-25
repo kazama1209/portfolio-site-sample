@@ -1,13 +1,12 @@
-import TopImage from "components/TopImage"
+import React from "react"
+import Introduction from "components/Introduction"
 
 const Home: React.FC = () => {
+
   return (
-    <>
-      <div className="shutter">
-        <img src="nextjs.png" alt="logo" className="logo"/>
-      </div>
-      <TopImage />
-    </>
+    <React.Fragment>
+      <Introduction />
+    </React.Fragment>
   )
 }
 

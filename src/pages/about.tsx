@@ -1,3 +1,4 @@
+import React from "react"
 import { GetStaticProps } from "next"
 
 import { Grid, Typography } from "@material-ui/core"
@@ -6,22 +7,25 @@ import { Container, Box } from "@material-ui/core"
 
 import CommonLayout from "components/layouts/CommonLayout"
 import MyAvatar from "components/MyAvatar"
-import MyHistory from "components/MyHistory"
-import SkillCards from "components/SkillCards"
-import WorkCards from "components/WorkCards"
-import PostCards from "components/PostCards"
+import MyCareer from "components/MyCareer"
+import Skills from "components/Skills"
+import Works from "components/Works"
+import Posts from "components/Posts"
 
-import { fetchLatestPosts } from "lib/api/posts"
+import { getLatestPosts } from "lib/api/posts"
 import { Post } from "interfaces/index"
 
 const useStyles = makeStyles(() => ({
+  gridContainer: {
+    marginBottom: "1rem"
+  },
   profile: {
     padding: "4rem 0 5rem 0",
     backgroundColor: "#f0f8ff"
   },
   skills: {
     padding: "4rem 0 5rem 0",
-    backgroundColor: "#ffffff"
+    backgroundColor: "#fff"
   },
   works: {
     padding: "4rem 0 5rem 0",
@@ -29,28 +33,29 @@ const useStyles = makeStyles(() => ({
   },
   blog: {
     padding: "4rem 0 5.5rem 0",
-    backgroundColor: "#ffffff"
+    backgroundColor: "#fff"
   }
 }))
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts: Post[] = await fetchLatestPosts(5) // トップページは最新の5件取得
+  const res = await getLatestPosts(5)
+  const latestPosts: Post[] = res.data.contents // トップページは最新の5件を取得
 
   return {
-    props: { posts },
+    props: { latestPosts },
     revalidate: 1
   }
 }
 
-const Profile = ({ posts }) => {
+const About = ({ latestPosts }) => {
   const classes = useStyles()
 
   return (
-    <CommonLayout title="Profile | Portfolio">
-      <>
+    <CommonLayout title="About | Portfolio">
+      <React.Fragment>
         <section id="profile" className={classes.profile}>
           <Container maxWidth="lg">
-            <Grid container justifyContent="center" style={{ marginBottom: "1rem" }}>
+            <Grid container justifyContent="center" className={classes.gridContainer}>
               <Grid item>
                 <Typography variant="h2" gutterBottom>
                   Profile
@@ -58,12 +63,12 @@ const Profile = ({ posts }) => {
               </Grid>
             </Grid>
             <MyAvatar />
-            <MyHistory />
+            <MyCareer />
           </Container>
         </section>
         <section id="skills" className={classes.skills}>
           <Container maxWidth="lg">
-            <Grid container justifyContent="center" style={{ marginBottom: "1rem" }}>
+            <Grid container justifyContent="center" className={classes.gridContainer}>
               <Grid item>
                 <Typography
                   variant="h2"
@@ -73,36 +78,36 @@ const Profile = ({ posts }) => {
                 </Typography>
               </Grid>
             </Grid>
-            <SkillCards />
+            <Skills />
           </Container>
         </section>
         <section id="works" className={classes.works}>
           <Container maxWidth="lg">
-            <Grid container justifyContent="center" style={{ marginBottom: "1rem" }}>
+            <Grid container justifyContent="center" className={classes.gridContainer}>
               <Grid item>
                 <Typography variant="h2" gutterBottom>
                   Works
                 </Typography>
               </Grid>
             </Grid>
-            <WorkCards />
+            <Works />
           </Container>
         </section>
         <section id="blog" className={classes.blog}>
           <Container maxWidth="lg">
-            <Grid container justifyContent="center" style={{ marginBottom: "1rem" }}>
+            <Grid container justifyContent="center" className={classes.gridContainer}>
               <Grid item>
                 <Typography variant="h2" gutterBottom>
                   Blog
                 </Typography>
               </Grid>
             </Grid>
-            <PostCards posts={posts} />
+            <Posts posts={latestPosts} />
           </Container>
         </section>
-      </>
+      </React.Fragment>
     </CommonLayout>
   )
 }
 
-export default Profile
+export default About

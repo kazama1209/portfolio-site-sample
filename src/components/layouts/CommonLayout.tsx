@@ -27,7 +27,7 @@ const CommonLayout: React.FC<CommonLayoutProps> = ({ children, title }) => {
         {`
           html,
           body {
-            background: #ffffff;
+            background: #fff;
             overflow-x: hidden;
             padding: 0 !important;
           }

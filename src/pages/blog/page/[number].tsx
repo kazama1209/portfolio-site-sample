@@ -8,8 +8,8 @@ import { Container, Grid, Typography } from "@material-ui/core"
 import { Pagination } from "@material-ui/lab"
 
 import CommonPageTemplate from "components/layouts/CommonLayout"
-import PostCards from "components/PostCards"
-import { fetchAllPosts, fetchPostsByPageNumber } from "lib/api/posts"
+import PostCards from "components/Posts"
+import { getAllPosts, getPostsByPageNumber } from "lib/api/posts"
 
 import { Post } from "interfaces/index"
 
@@ -40,7 +40,8 @@ const useStyles = makeStyles(() => ({
 }))
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = await fetchAllPosts()
+  const res = await getAllPosts()
+  const allPosts: Post[] = res.data.contents
 
   const per_page = 8
 
@@ -62,8 +63,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const currentPageNumber: number = Number(params.number)
   const limit: number = 8
 
-  const postsByPageNumber: Post[] = await fetchPostsByPageNumber(currentPageNumber, limit)
-  const allPosts: Post[] = await fetchAllPosts()
+  const res1 = await getPostsByPageNumber(currentPageNumber, limit)
+  const postsByPageNumber: Post[] = res1.data.contents
+
+  const res2 = await getAllPosts()
+  const allPosts: Post[] = res2.data.contents
 
   return { 
     revalidate: 1,
@@ -89,7 +93,7 @@ const BlogPage = ({ currentPageNumber, postsByPageNumber, allPosts }) => {
 
   return (
     <CommonPageTemplate title="Blog | Portfolio">
-      <section className={classes.blog}>
+      <section id="blog-page" className={classes.blog}>
         <Container maxWidth="lg" className={classes.container}>
           <Grid container justifyContent="center" style={{ marginBottom: "1rem" }}>
             <Grid item>

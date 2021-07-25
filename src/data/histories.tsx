@@ -3,9 +3,9 @@ import SchoolIcon from "@material-ui/icons/School"
 import BusinessIcon from "@material-ui/icons/Business"
 import ComputerIcon from "@material-ui/icons/Computer"
 
-import { Career } from "interfaces/index"
+import { History } from "interfaces/index"
 
-export const careers: Career[] = [
+export const histories: History[] = [
   {
     title: "Birth",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",

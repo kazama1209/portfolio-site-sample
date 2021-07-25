@@ -25,11 +25,11 @@ const useStyles = makeStyles(() => ({
     transform: "translate(-50%,-50%)",
   },
   text: {
-    color: "#ffffff"
+    color: "#fff"
   }
 }))
 
-const WorkCards: React.FC = () => {
+const Works: React.FC = () => {
   const classes = useStyles()
   
   return (
@@ -87,4 +87,4 @@ const WorkCards: React.FC = () => {
   )
 }
 
-export default WorkCards
+export default Works

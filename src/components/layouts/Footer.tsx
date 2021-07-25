@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: `100%`,
     position: "relative",
     overflow: "hidden",
-    // marginTop: "6em",
     padding: "2em 0 "
   },
   link: {
@@ -40,7 +39,7 @@ const Footer = () => {
   return (
     <div className={classes.footer}>
       <Container maxWidth="lg">
-        <Grid container spacing={3} justify="center">
+        <Grid container spacing={3} justifyContent="center">
           {path.map(({ name, link }) => (
             <Grid item key={link}>
               <Link href={link}>

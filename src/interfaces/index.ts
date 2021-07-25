@@ -3,7 +3,7 @@ export interface Route {
   link: string
 }
 
-export interface Career {
+export interface History {
   title: string
   description: string,
   date: string

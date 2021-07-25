@@ -10,7 +10,7 @@ import moment from "moment"
 import ShareButton from "components/utils/ShareButton"
 import CommonLayout from "components/layouts/CommonLayout"
 
-import { fetchAllPosts, fetchPostById } from "lib/api/posts"
+import { getAllPosts, getPostById } from "lib/api/posts"
 import { Post } from "interfaces/index"
 
 const useStyles = makeStyles(() => ({
@@ -24,16 +24,14 @@ const useStyles = makeStyles(() => ({
     maxWidth: "100%",
   },
   gridContainer: {
-    // marginTop: "2rem",
-    // width: 640,
-    // maxWidth: "100%",
     padding: "0 1rem",
     overflow: "hidden"
   }
 }))
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts: Post[] = await fetchAllPosts()
+  const res = await getAllPosts()
+  const posts: Post[] = res.data.contents
   const paths = posts.map(({ id }) => `/blog/${id}`)
 
   return { 
@@ -44,7 +42,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id: string = String(params.id)
-  const post: Post = await fetchPostById(id)
+  const res = await getPostById(id)
+  const post: Post = res.data
 
   return {
     props: { post },
@@ -57,7 +56,7 @@ const BlogId = ({ post }) => {
 
   return (
     <CommonLayout title="Blog | Portfolio">
-      <section className={classes.blog}>
+      <section id="blog-id" className={classes.blog}>
         <Container className={classes.container}>
           <Card>
             <CardContent>

@@ -1,6 +1,6 @@
 import { Route } from "interfaces/index"
 
 export const routes: Route[] = [
-  { name: "Profile", link: "/profile"},
+  { name: "About", link: "/about"},
   { name: "Blog", link: "/blog/page/1" }
 ]

@@ -38,7 +38,7 @@ const useStyles = makeStyles(() => ({
   }
 }))
 
-const SkillCards: React.FC = () => {
+const Skills: React.FC = () => {
   const classes = useStyles()
 
   return (
@@ -64,16 +64,16 @@ const SkillCards: React.FC = () => {
                     <Divider style={{ marginTop: "0.5rem" }} />
                     <Grid container spacing={2} style={{ marginTop: "0.5rem" }}>
                       {
-                        logos.map((logo) => (                            
+                        logos.map(({ title, image }) => (                            
                           <Grid item key={index} xs={3}>
-                            <Tooltip title={logo.title}>
+                            <Tooltip title={title}>
                               <Box
                                 style={{
                                   width: "4rem",
                                   height: "4rem",
                                   margin: "0 auto",
                                   backgroundSize: "cover",
-                                  backgroundImage: `url(${logo.image})`,
+                                  backgroundImage: `url(${image})`,
                                   backgroundPosition: "center center",
                                   backgroundRepeat: "no-repeat"
                                 }}
@@ -94,4 +94,4 @@ const SkillCards: React.FC = () => {
   )
 }
 
-export default SkillCards
+export default Skills

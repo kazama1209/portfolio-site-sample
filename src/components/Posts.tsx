@@ -48,7 +48,7 @@ interface PostCardsProps {
   isAnimationOff?: boolean
 }
 
-const PostCards: React.FC<PostCardsProps> = ({ posts, isAnimationOff }) => {
+const Posts: React.FC<PostCardsProps> = ({ posts, isAnimationOff }) => {
   const classes = useStyles()
 
   const featuredPosts = (index: number): boolean => {
@@ -57,9 +57,9 @@ const PostCards: React.FC<PostCardsProps> = ({ posts, isAnimationOff }) => {
 
   return (
     <Grid container spacing={4}>    
-      {posts?.map((post: Post, index: number) => (
+      {posts?.map(({ id, title, subTitle, publishedAt, thumbnail}, index: number) => (
         <Grid
-          item key={post.id}
+          item key={id}
           sm={featuredPosts(index) ? 12 : 6}
           md={featuredPosts(index) ? 6 : 4}
         >
@@ -75,19 +75,19 @@ const PostCards: React.FC<PostCardsProps> = ({ posts, isAnimationOff }) => {
                     <MoreVertIcon />
                   </IconButton>
                 }
-                title={post.title}
-                subheader={moment(post.publishedAt).format("MMMM Do YYYY")}
+                title={title}
+                subheader={moment(publishedAt).format("MMMM Do YYYY")}
               />
-              <Link href="/blog/[id]" as={`/blog/${post.id}`}>
-                <CardMedia className={classes.cardMedia} image={post.thumbnail.url} title={post.title} />
+              <Link href="/blog/[id]" as={`/blog/${id}`}>
+                <CardMedia className={classes.cardMedia} image={thumbnail.url} title={title} />
               </Link>
               <CardContent>
                 <Typography variant="body1" color="textSecondary" component="p">
-                  {post.subTitle?.length > 140 ? post.subTitle.substr(0, 140) + "..." : post.subTitle}
+                  {subTitle?.length > 140 ? subTitle.substr(0, 140) + "..." : subTitle}
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
-                <Link href="/blog/[id]" as={`/blog/${post.id}`}>
+                <Link href="/blog/[id]" as={`/blog/${id}`}>
                   <Button
                     variant="outlined"
                     size="small"
@@ -105,4 +105,4 @@ const PostCards: React.FC<PostCardsProps> = ({ posts, isAnimationOff }) => {
   )
 }
 
-export default PostCards
+export default Posts
