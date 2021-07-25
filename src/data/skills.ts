@@ -47,7 +47,7 @@ export const skills: Skill[] = [
     logos: [
       {
         title: "AWS",
-        image: "awscloud.png"
+        image: "aws-saa.png"
       },
       {
         title: "CircleCI",

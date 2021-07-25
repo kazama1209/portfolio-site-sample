@@ -120,7 +120,7 @@ const Introduction: React.FC = () => {
           gutterBottom
           className={classes.text}
         >
-          Japanese Web Engineer
+          Japanese Web Engineer !
         </Typography>
         <Link href="/about">
           <Button variant="outlined" className={classes.button}>
